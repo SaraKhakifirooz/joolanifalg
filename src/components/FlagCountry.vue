@@ -1,55 +1,52 @@
 <template>
-  <div class="w-[300px] mt-[1%] mr-[1%]" >
-    <div class="service-box">
-      <div class="service-icon grey">
-        <div class="front-content">
-          <img :src="flagscountrydata.flags.svg" alt="{{ flagscountrydata.name.common }}">
-          <i class="fa fa-trophy"></i>
-          <h3>{{ flagscountrydata.name.common }}</h3>
+    <div class="w-[300px] mt-[1%] mr-[1%]">
+        <div class="service-box">
+            <div class="service-icon grey">
+                <div class="front-content">
+                    <img :src="FlagCountryprops.svg" :alt="FlagCountryprops.commonName">
+                    <i class="fa fa-trophy"></i>
+                    <h3>{{ FlagCountryprops.commonName }}</h3>
+                </div>
+            </div>
+            <div class="service-content">
+                <h3>{{ FlagCountryprops.commonName }}</h3>
+                <p> {{ FlagCountryprops.OfficialName }} </p>
+                <router-link :to="{  name: 'CountryDetailsView',  params: { name: FlagCountryprops.OfficialName }  }">
+                    More Details
+                </router-link>
+            </div>
         </div>
-      </div>
-      <div class="service-content">
-        <h3>{{ flagscountrydata.name.common }}</h3>
-        <p> {{ flagscountrydata.name.official }} </p>
-      </div>
     </div>
-  </div>
 </template>
 
+
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import axios from 'axios'
 
-interface Flagscountry {
-  flags: Image;
-  name: Name;
+interface FlagProps {
+    id:number;
+    svg: string;
+    commonName?: string;
+    OfficialName: string;
 }
 
-interface Name {
-  common: string;
-  official: string;
-}
+const FlagCountryprops = defineProps<FlagProps>()
 
-interface Image {
-  png: string;
-  svg: string;
-  alt: string;
-}
+// interface FlagProps {
+//     svg: string;
+//     commonName: string;
+//     OfficialName: string;
+// }
 
-const flagscountrydata = ref<Flagscountry[]>([]);
+// const FlagCountryprops = defineProps({
+//     svg: {
+//         type: String as PropType<FlagProps>
+//     }
+// })
 
-const flags = async () => {
-  return await axios.get('https://restcountries.com/v3.1/all?fields=name,flags').then((response) => {
-    console.log(response);
-    flagscountrydata.value = response.data
-  });
-}
-
-onMounted(() => {
-  flags();
-})
+// const FlagCountryprops = withDefaults(defineProps<FlagProps>(), {
+//     svg: "",
+//     commonName: "Sara";
+    
+// })
 
 </script>
-
-
-<style scoped></style>
