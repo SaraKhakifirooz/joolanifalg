@@ -10,11 +10,7 @@
     </div>
     <div class="service-content">
       <h3>{{ flag.title }}</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos error reiciendis dicta. Consectetur
-        sequi doloremque, dicta ea nemo dolore quisquam qui laborum dolorem quas rem neque. Aliquam ducimus magni
-        dignissimos.
-      </p>
+      <p>{{ flag.description }}</p>
     </div>
   </div>
 </template>
@@ -23,12 +19,8 @@
 
 <script setup lang="ts">
 
-interface FlagProps {
-  id: number;
-  title: string;
-}
+import type { FlagProps } from '@/framework/Model';
 
 const flag = defineProps<FlagProps>()
-
 
 </script>

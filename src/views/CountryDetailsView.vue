@@ -1,5 +1,5 @@
 <template>
-  <main class="countrydetails px-3">
+  <main class=" countrydetails px-3">
 
     <div class="w-full ">
       <img :src="countryInfo[0].flags.svg" :alt="countryInfo[0].name.common">

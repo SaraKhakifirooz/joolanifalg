@@ -22,14 +22,10 @@
 
 <script setup lang="ts">
 
-interface FlagProps {
-    id:number;
-    svg: string;
-    commonName?: string;
-    OfficialName: string;
-}
+import type { FlagCountry } from '@/framework/Model';
 
-const FlagCountryprops = defineProps<FlagProps>()
+const FlagCountryprops = defineProps<FlagCountry>()
+
 
 // interface FlagProps {
 //     svg: string;
@@ -37,11 +33,13 @@ const FlagCountryprops = defineProps<FlagProps>()
 //     OfficialName: string;
 // }
 
+
 // const FlagCountryprops = defineProps({
 //     svg: {
 //         type: String as PropType<FlagProps>
 //     }
 // })
+
 
 // const FlagCountryprops = withDefaults(defineProps<FlagProps>(), {
 //     svg: "",
